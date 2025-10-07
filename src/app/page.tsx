@@ -61,16 +61,16 @@ export default function DisneyCarousel() {
 
   const getCardHeight = (index: number, slide: number): string => {
     if (slide === 0) {
-      if (index === 0) return 'h-[380px]';
-      if (index === 1) return 'h-[320px]';
-      if (index === 2) return 'h-[380px]';
-      if (index === 3) return 'h-[260px] opacity-60 scale-90';
+      if (index === 0) return 'h-[280px]';
+      if (index === 1) return 'h-[240px]';
+      if (index === 2) return 'h-[280px]';
+      if (index === 3) return 'h-[200px] opacity-60 scale-90';
     } else if (slide === 1) {
-      if (index === 0 || index === 1 || index === 2) return 'h-[260px] opacity-60 scale-90';
-      if (index === 3 || index === 4) return 'h-[380px]';
-      if (index === 5) return 'h-[260px]';
+      if (index === 0 || index === 1 || index === 2) return 'h-[200px] opacity-60 scale-90';
+      if (index === 3 || index === 4) return 'h-[280px]';
+      if (index === 5) return 'h-[200px]';
     }
-    return 'h-[400px]';
+    return 'h-[260px]';
   };
 
   // Build an image path from the character name as fallback if image not given
@@ -149,41 +149,37 @@ export default function DisneyCarousel() {
         <div className="flex-1 relative overflow-hidden py-8 px-4">
           {selectedCard === null ? (
             // Normal Carousel View
-            <div className="mx-auto overflow-hidden" style={{ width: 812 }}>
+            <div className="mx-auto overflow-hidden px-[80px] w-full">
               <div
                 className="flex gap-4 transition-transform duration-700 ease-in-out"
                 style={{
-                  transform: `translateX(-${currentSlide * 812}px)`
+                  transform: `translateX(-${currentSlide * 968}px)`
                 }}
               >
              {characters.map((character, index) => (
                 <div
                   key={index}
                   onClick={() => handleCardClick(index)}
-                  className={`min-w-[260px] rounded-[1.75rem] overflow-visible relative cursor-pointer shadow-[0_16px_40px_rgba(0,0,0,0.12)] transition-all duration-700 ease-in-out hover:scale-105 hover:-translate-y-2 ${getCardHeight(index, currentSlide)}`}
-                  style={{
-                    clipPath: currentSlide === 0 && index === 3 ? 'inset(0 70% 0 0)' : 'none',
-                    opacity: currentSlide === 0 && index === 3 ? 0.7 : 1
-                  }}
+                    className={`min-w-[320px] rounded-[1.75rem] overflow-visible relative cursor-pointer shadow-[0_16px_40px_rgba(0,0,0,0.12)] transition-all duration-700 ease-in-out hover:scale-105 hover:-translate-y-2 ${getCardHeight(index, currentSlide)}`}
                 >
                   {/* Card background */}
-                  <div className={`w-full h-full bg-gradient-to-br ${character.color} rounded-[1.75rem] p-5 relative overflow-hidden`}>
+                    <div className={`w-full h-full bg-gradient-to-br ${character.color} rounded-[1.75rem] p-5 relative overflow-hidden`}>
                     <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-white/10 pointer-events-none" />
                   </div>
 
                   {/* Character image sitting near the top of the card */}
-                  <div className="absolute -top-8 left-1/2 -translate-x-1/2">
+                    <div className="absolute -top-10 left-1/2 -translate-x-1/2">
                     <img
                       src={character.image || nameToImagePath(character.name)}
                       alt={character.name}
-                      className="h-40 w-auto drop-shadow-2xl select-none"
+                        className="h-52 md:h-56 w-auto drop-shadow-2xl select-none"
                       onError={(e) => {
                         (e.currentTarget as HTMLImageElement).src = '/placeholder.svg'
                       }}
                     />
                   </div>
                   
-                  <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
+                    <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
                     <h3 className="text-white text-xl font-extrabold tracking-tight mb-1 drop-shadow-sm">{character.name}</h3>
                     <p className="text-white/90 text-xs">{character.subtitle}</p>
                   </div>
