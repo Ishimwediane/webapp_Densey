@@ -456,7 +456,7 @@ export default function DisneyCarousel() {
                       }}
                     >
                       <p className="text-gray-700 text-lg leading-relaxed mb-6">
-                        Sadness is literally the very definition and being of sorrow and gloom. She is hardly ever used because Joy is the boss and doesn't want Riley to ever be sad, even when she needs to be. Because of this, Joy treats Sadness badly.
+                        Sadness is literally the very definition and being of sorrow and gloom. She is hardly ever used because Joy is the boss and doesn&apos;t want Riley to ever be sad, even when she needs to be. Because of this, Joy treats Sadness badly.
                       </p>
                     </div>
 
